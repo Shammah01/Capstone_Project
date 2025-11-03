@@ -25,3 +25,10 @@ def appointment_list(request):
     else:
         appointments = Appointment.objects.filter(patient=request.user)
     return render(request, 'appointment/appointment_list.html', {'appointments': appointments})
+
+@login_required
+def cancel_appointment(request, pk):
+    appointment = Appointment.objects.get(pk=pk, patient=request.user)
+    appointment.status = 'cancelled'
+    appointment.save()
+    return redirect('appointment_list')

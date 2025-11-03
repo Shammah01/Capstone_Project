@@ -26,4 +26,5 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('', home),  # Home page
     path('appointments/', include('appointments.urls')),
+    path('notifications/', include('notifications.urls')),
 ]

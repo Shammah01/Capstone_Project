@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from notifications.models import Notification
 
 User = get_user_model()
 # Create your models here.
@@ -51,3 +52,13 @@ class Appointment(models.Model):
 
     class Meta:
         ordering = ['-appointment_date']
+
+def create_appointment_notification(sender, instance, created, **kwargs):
+    if created:
+        Notification.objects.create(
+            user=instance.doctor,
+            message=f"New appointment scheduled with {instance.patient.username} on {instance.date} at {instance.time}."
+        )
+
+from django.db.models.signals import post_save
+post_save.connect(create_appointment_notification, sender=Appointment)

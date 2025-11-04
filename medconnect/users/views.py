@@ -35,3 +35,7 @@ def user_logout(request):
 @login_required
 def user_profile(request):
     return render(request, 'users/profile.html')
+
+@login_required
+def dashboard(request):
+    return render(request, 'users/dashboard.html')

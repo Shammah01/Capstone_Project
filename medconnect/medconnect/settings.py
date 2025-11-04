@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--ty@^#!pps21!r)8^%gf)2^mcsss)kxk!9ra6o1*42$ymxywtv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -113,6 +113,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# Redirect URLs for authentication
+LOGIN_URL = '/users/login/'         # Where users go when not logged in
+LOGIN_REDIRECT_URL = '/users/dashboard/'  # Where to send them after login
+LOGOUT_REDIRECT_URL = '/users/login/'     # Where to go after logout
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

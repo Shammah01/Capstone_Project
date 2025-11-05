@@ -46,6 +46,18 @@ class Appointment(models.Model):
     symptoms = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
+    is_reminder_sent = models.BooleanField(default=False)
+    time = models.TimeField(max_length=50)
+    time_slot = models.CharField(max_length=50, choices=[
+        ('09:00-10:00', '09:00-10:00'),
+        ('10:00-11:00', '10:00-11:00'),
+        ('11:00-12:00', '11:00-12:00'),
+        ('12:00-13:00', '12:00-13:00'),
+        ('13:00-14:00', '13:00-14:00'),
+        ('14:00-15:00', '14:00-15:00'),
+        ('15:00-16:00', '15:00-16:00'),
+        ('16:00-17:00', '16:00-17:00'),
+    ])
 
     def __str__(self):
         return f"{self.patient.username} with Dr. {self.doctor.username} on {self.appointment_date.strftime('%Y-%m-%d %H:%M')}"

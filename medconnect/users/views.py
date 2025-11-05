@@ -39,3 +39,8 @@ def user_profile(request):
 @login_required
 def dashboard(request):
     return render(request, 'users/dashboard.html')
+
+@login_required
+def notifications(request):
+    # This will be improved later in Phase 4b
+    return render(request, 'users/notifications.html')

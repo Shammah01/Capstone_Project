@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Dashboard</title>
-</head>
-<body>
-  <h1>Welcome, {{ request.user.username }}!</h1>
-  <p>This is your MedConnect dashboard.</p>
-  <a href="{% url 'logout' %}">Logout</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Dashboard | MedConnect{% endblock %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h3 class="mb-3 text-center text-primary">Welcome, {{ user.username }}</h3>
+    <p class="lead text-center">Manage your appointments and notifications easily.</p>
+    <div class="text-center mt-4">
+        <a href="{% url 'book_appointment' %}" class="btn btn-success me-2">Book Appointment</a>
+        <a href="{% url 'notifications' %}" class="btn btn-outline-primary">View Notifications</a>
+    </div>
+</div>
+{% endblock %}

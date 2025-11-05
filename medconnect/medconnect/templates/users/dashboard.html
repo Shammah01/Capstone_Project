@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <h1>Welcome, {{ user.username }} 👋</h1>
+    <p class="lead">This is your MedConnect Dashboard</p>
+
+    <a href="/appointments/" class="btn btn-primary">View Appointments</a>
+    <a href="/notifications/" class="btn btn-info">View Notifications</a>
+</div>
+{% endblock %}
